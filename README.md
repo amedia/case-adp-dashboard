@@ -1,5 +1,4 @@
-# case-adp-dashboard
-Case-intervju for adplogger.
+# Case-intervju for adplogger.
 
 Hvordan vil du løse et relatime-dashboard som viser lesetid for artikler.
 
