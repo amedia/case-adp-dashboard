@@ -1,0 +1,265 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-height: 100vh;
+}
+
+.wrapper {
+    display: flex;
+    margin-top: 23px;
+}
+
+table {
+    border-spacing: 0;
+    min-width: 100%;
+}
+
+tr td {
+    border-top: 1px solid rgba(0, 0, 0, .05);
+}
+
+th,
+td {
+    text-align: left;
+    padding: 5px 10px;
+    vertical-align: top;
+}
+
+amedia-event-list {
+    display: block;
+    flex-grow: 1;
+    overflow-y: scroll;
+    background: #f5f5f5;
+    color: black;
+    height: calc(100vh - 23px);
+}
+
+amedia-event-list > div {
+    padding: 5px 10px;
+}
+
+amedia-event-list > div:nth-child(odd) {
+    background: #242424;
+    color: white;
+    border-bottom: 1px solid #eee;
+    border-top: 1px solid #eee;
+}
+
+amedia-event-list strong {
+    display: inline-block;
+    width: 100px;
+}
+
+amedia-event-list span {
+    overflow: hidden;
+    display: inline-block;
+    background: #f0f0f0;
+    width: 9px;
+    height: 9px;
+    border-radius: 2px;
+    margin-right: 3px;
+    border: 1px solid #ccc;
+    vertical-align: middle;
+}
+
+amedia-event-list span:hover {
+    background-color: #DEFDE0;
+    border-color: #090;
+}
+
+amedia-event-list span.active,
+amedia-event-list span.hover {
+    background-color: #090;
+    border-color: #090;
+}
+
+/*
+.meta-resource span {
+    background-color: #FDDFDF;
+}
+
+.meta-teaser span {
+    background-color: #DEFDE0;
+}
+
+.event-click span {
+    background-color: #F0DEFD;
+}
+
+.event-inscreen span {
+    background-color: #FCF7DE;
+}
+
+.event-scroll span {
+    background-color: #DEF3FD;
+}
+*/
+
+.info::after {
+    content: 'i';
+    display: inline-block;
+    border: 1px solid #ccc;
+    background: #fff;
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    margin-left: .3em;
+    text-align: center;
+    vertical-align: top;
+    font-size: 10px;
+    color: #ccc;
+}
+
+.toolbar {
+    height: 24px;
+    display: flex;
+    width: 100%;
+    line-height: 24px;
+    align-items: center;
+    box-shadow: 0 5px 5px rgba(0,0,0,.15);
+    position: fixed;
+    top: 0;
+    background: #fff;
+}
+
+.toolbar .recordBtn,
+.toolbar .clearBtn,
+.toolbar .resetCounterBtn {
+    cursor: pointer;
+    position: relative;
+    height: 24px;
+    width: 32px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.toolbar .recordBtn::before {
+    content: '';
+    position: absolute;
+    display: block;
+    border-radius: 100%;
+    height: 12px;
+    width: 12px;
+    left: 50%;
+    margin-left: -6px;
+    top: 50%;
+    margin-top: -6px;
+    background: #ccc;
+}
+
+.toolbar .recordBtn.active::before {
+    background: #900;
+}
+
+.toolbar .clearBtn::before {
+    content: '\2298';
+    position: relative;
+    top: -2px;
+    font-size: 21px;
+}
+
+.toolbar .resetCounterBtn::before {
+    content: '\24B6';
+    position: relative;
+    color: black;
+    top: 0px;
+    font-size: 17px;
+}
+
+.toolbar input {
+    max-height: 17px;
+    margin-right: 0.3em;
+}
+
+.hidden {
+    display: none;
+}
+
+.details {
+    background-color: #e6e6e6;
+    color: black;
+    border-left: 1px solid #ccc;
+    width: 50vw;
+    flex-grow: 0;
+    overflow-y: scroll;
+    height: calc(100vh - 23px);
+}
+
+.details h1 {
+    background: #f0f0f0;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #333;
+    text-shadow: 0 1px 1px #fff;
+    padding: 4px 10px 3px;
+    margin: 0;
+}
+
+.details dl {
+    padding: 10px;
+    margin: 0;
+}   
+
+.details dd {
+    display: inline;
+    margin: 0;
+}
+
+.details dt {
+    display: inline;
+    font-weight: bold;
+}
+
+.details dt::after {
+    content: ': ';
+}
+
+.details dl h2::after,
+.details dd::after {
+    content: '';
+    display: block;
+    width: 100%;
+}
+
+.details dl dl{
+    background: #f9f9f9;
+    color: black;
+    padding: 10px;
+    margin: 0 0 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.details dl h2 {
+    font-size: 13px;
+    color: rgb(3, 3, 3);
+    text-transform: uppercase;
+    border-bottom: 1px solid #ccc;
+    margin: 10px 0 0;
+}
+
+.details dl h1 {
+    margin: 0;
+}
+
+.details .link {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #00f;
+}
+
+amedia-pagenav {
+    color: #fff;
+    display: block;
+    background: #666;
+    padding: 5px 10px;
+}
+
+amedia-pagenav::before {
+    content: 'Page navigation';
+    text-transform: uppercase;
+    font-size: 10px;
+}
