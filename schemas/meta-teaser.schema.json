@@ -1,0 +1,100 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://www.adplogger.no/json-schema/meta-teaser",
+    "title": "Teaser",
+    "description": "A teaser of some content",
+    "type": "object",
+    "allOf": [{ "$ref": "meta-element.schema.json" }],
+    "$context": {
+        "@vocab": "http://schema.org/",
+        "adp": "https://www.adplogger.no/json-schema/",
+        "schema": "http://schema.org/",
+        "id": "@id",
+        "type": "@type",
+        "title": "schema:headline",
+        "contentId": "schema:identifier",
+        "adpType": "adp:meta-element#adpType",
+        "testId":  "adp:meta-teaser#testid",
+        "variant": "adp:meta-teaser#variant"
+    },
+    "examples": [{
+        "domainBrowserId": "681dfce1-8867-4a0b-b758-c80f5f5f3363",
+        "domainVisitId": "93af7655-48ca-4444-9fea-8d875ffffc92",
+        "pageUrl": "https://www.ba.no",
+        "pageViewId": "5404f76c-2472-42f8-a3b3-7a2231eaf812",
+        "schemaName": "meta-teaser",
+        "payload": {
+            "id": "f8174898-1097-43d1-83de-61e36ed5c980",
+            "position": 0,
+            "type": "Article",
+            "adpType": "teaser",
+            "parent": "69a0ecf1-8075-40a4-b7f5-695b2a651eab",
+            "cssSelector": "#art-5-8-1187628 > article",
+            "variant": "a",
+            "testId": "c59189344a",
+            "title": "Finner ikke konkret svar på drikkevannsskandalen",
+            "url": "https://www.ba.no/drikkevannskandalen/askoy/mattilsynet/mattilsynet-tror-fugler-og-dyr-er-opphavet-til-smitten-i-askoy-vannet/s/5-8-1187628"
+        }
+    }, {
+        "domainBrowserId": "681dfce1-8867-4a0b-b758-c80f5f5f3363",
+        "domainVisitId": "93af7655-48ca-4444-9fea-8d875ffffc92",
+        "pageUrl": "https://www.ba.no",
+        "pageViewId": "5404f76c-2472-42f8-a3b3-7a2231eaf812",
+        "schemaName": "meta-teaser",
+        "payload": {
+            "id": "f8174898-1097-43d1-83de-61e36ed5c980",
+            "url": "https://www.ba.no/drikkevannskandalen/askoy/mattilsynet/mattilsynet-tror-fugler-og-dyr-er-opphavet-til-smitten-i-askoy-vannet/s/5-8-1187628"
+        }
+    }],
+    "properties": {
+        "schemaName": {
+            "type": "string",
+            "const": "meta-teaser",
+            "default": "meta-teaser"
+        },
+        "payload": {
+            "properties": {
+                "type": {
+                    "enum": ["Article", "NewsArticle", "AdvertiserContentArticle", "OpinionNewsArticle", "ReviewNewsArticle", "VideoObject"],
+                    "default": "Article"
+                },
+                "adpType": {
+                    "const": "teaser",
+                    "default": "teaser"
+                },
+                "variant": {
+                    "type": "string",
+                    "description": "Variant, if a/b testing (teaser testing) is performed"
+                },
+                "testId": {
+                    "type": "string",
+                    "description": "Id for test in dr. edition"
+                },
+                "contentId": {
+                    "type": "string",
+                    "description": "Content Source/Content Id"
+                },
+                "acpId": {
+                    "type": "string",
+                    "pattern": "\\d+-\\d+-\\d+",
+                    "description": "Amedia Content Platform Id (to be removed)"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "Title, if appropriate"
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "The content url the teaser links to"
+                },
+                "playerId": {
+                    "type": "string",
+                    "description": "Identifying player and/or videoid"
+                }
+            },
+            "type": "object",
+            "required": ["url"]
+        }
+    }
+}

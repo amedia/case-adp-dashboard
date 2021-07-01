@@ -1,0 +1,136 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://www.adplogger.no/json-schema/event-error",
+    "title": "Error Event",
+    "description": "Error logging event",
+    "type": "object",
+    "allOf": [{ "$ref": "event.schema.json" }],
+    "$context": {
+        "id": "@id",
+        "type": "@type",
+        "@vocab": "https://www.adplogger.no/json-schema/event-error/#"
+    },
+    "examples": [{
+        "domainBrowserId": "681dfce1-8867-4a0b-b758-c80f5f5f3363",
+        "domainVisitId": "93af7655-48ca-4444-9fea-8d875ffffc92",
+        "pageUrl": "https://www.hadeland.no/",
+        "pageViewId": "5404f76c-2472-42f8-a3b3-7a2231eaf812",
+        "schemaName": "event-error",
+        "payload": {
+            "deltaTimestamp": 504,
+            "concernsMeta": "9273aeb1-1efe-42c7-9ed4-929a076ca474",
+            "metaType": "WebPageElement",
+            "type": "error",
+            "level": "fatal",
+            "message": "Object is not an object",
+            "stacktrace": [{
+                "columnNumber":29,
+				"lineNumber":26,
+				"fileName":"/app/index.js",
+				"source":"    at /app/index.js:26:29"
+			}, {
+				"columnNumber":12,
+				"lineNumber":831,
+				"fileName":"internal/modules/cjs/loader.js",
+				"functionName":"Function.Module.runMain",
+				"source":"    at Function.Module.runMain (internal/modules/cjs/loader.js:831:12)"
+			}, {
+				"columnNumber":19,
+				"lineNumber":283,
+				"fileName":"internal/bootstrap/node.js",
+				"functionName":"startup",
+				"source":"    at startup (internal/bootstrap/node.js:283:19)"
+			}, {
+                "isConstructor": false,
+                "isEval":false,
+                "isNative": true,
+                "isToplevel": false,
+				"columnNumber":3,
+				"lineNumber":623,
+				"fileName":"internal/bootstrap/node.js",
+				"functionName":"bootstrapNodeJSCore",
+                "source":"    at bootstrapNodeJSCore (internal/bootstrap/node.js:623:3)"
+            }],
+            "source": "Amedia Explorer 6"
+        }
+    }],
+    "definitions": {
+        "stackframe": {
+            "type": "object",
+            "properties": {
+                "isConstructor": {
+                    "type": "boolean",
+                    "description": "Whether the call is a construct call"
+                },
+                "isEval": {
+                    "type": "boolean",
+                    "description": "If the current function was created using eval"
+                },
+                "isNative": {
+                    "type": "boolean",
+                    "description": "If a stack frame is within the js engine"
+                },
+                "isToplevel": {
+                    "type": "boolean",
+                    "description": "Is this a top-level invocation, that is, is this the global object"
+                },
+                "columnNumber": {
+                    "type": "integer",
+                    "description": "The column number for the function that triggers the error"
+                },
+                "lineNumber": {
+                    "type": "integer",
+                    "description": "The line number for the function that triggers the error"
+                },
+                "fileName": {
+                    "type": "string",
+                    "description": "The file name if the function wasa defined in a script/module"
+                },
+                "functionName": {
+                    "type": "string",
+                    "description": "The name of the function that generated the error, if the error not originated from a global scope"
+                },
+                "source": {
+                    "type": "string",
+                    "description": "The current location within the source"
+                }
+            }
+        }
+    },
+    "properties": {
+        "schemaName": {
+            "type": "string",
+            "const": "event-error",
+            "default": "event-error"
+        },
+        "payload": {
+            "properties": {
+                "type": {
+                    "const": "error"
+                },
+                "level": {
+                    "type": "string",
+                    "enum": ["fatal", "error", "warning", "info", "debug"],
+                    "description": "Log level for error message"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Error message"
+                },
+                "stacktrace": {
+                    "type": "array",
+                    "description": "Stack trace from the error as a list of stack frames",
+                    "items": {
+                        "$ref": "#/definitions/stackframe"
+                    }
+                },
+                "source": {
+                    "type": "string",
+                    "description": "Which component/application triggered the error"
+                }
+            },
+            "type": "object",
+            "required": ["type", "level", "message"]
+        }
+    }
+}

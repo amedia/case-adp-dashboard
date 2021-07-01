@@ -1,0 +1,101 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://www.adplogger.no/json-schema/meta-ad",
+    "title": "WPAdBlock",
+    "description": "A web page ad block.",
+    "type": "object",
+    "allOf": [{ "$ref": "meta-element.schema.json" }],
+    "$context": {
+        "@vocab": "http://schema.org/",
+        "schema": "http://schema.org/",
+        "adp": "https://www.adplogger.no/json-schema/",
+        "id": "@id",
+        "type": "@type",
+        "WPAdBlock": "schema:WPAdBlock",
+        "unit": "adp:meta-ad#unit",
+        "lineItem": "adp:meta-ad#lineItem",
+        "advertiser": "adp:meta-ad#advertiser",
+        "creative": "adp:meta-ad#creative",
+        "adpType": "adp:meta-element#adpType"
+    },
+    "examples": [{
+        "domainBrowserId": "681dfce1-8867-4a0b-b758-c80f5f5f3363",
+        "domainVisitId": "93af7655-48ca-4444-9fea-8d875ffffc92",
+        "pageUrl": "https://www.hadeland.no",
+        "pageViewId": "5404f76c-2472-42f8-a3b3-7a2231eaf812",
+        "schemaName": "meta-ad",
+        "payload": {
+            "id": "f8174898-1097-43d1-83de-61e36ed5c980",
+            "position": 0,
+            "type": "WPAdBlock",
+            "adpType": "ad",
+            "parent": "69a0ecf1-8075-40a4-b7f5-695b2a651eab",
+            "cssSelector": "#midtbanner-1",
+            "name": "midtbanner",
+            "unit": "67410776",
+            "lineItem": "1018520456",
+            "advertiser": "BUD Redningsselskapet",
+            "creative": "138242702988"
+        }
+    }, {
+        "domainBrowserId": "681dfce1-8867-4a0b-b758-c80f5f5f3363",
+        "domainVisitId": "93af7655-48ca-4444-9fea-8d875ffffc92",
+        "pageUrl": "https://www.hadeland.no",
+        "pageViewId": "5404f76c-2472-42f8-a3b3-7a2231eaf812",
+        "schemaName": "meta-ad",
+        "payload": {
+            "id": "f8174898-1097-43d1-83de-61e36ed5c980",
+            "name": "midtbanner",
+            "unit": "67410776",
+            "lineItem": "1018520456",
+            "advertiser": "BUD Redningsselskapet",
+            "creative": "138242702988"
+        }
+    }],
+    "properties": {
+        "schemaName": {
+            "type": "string",
+            "const": "meta-ad",
+            "default": "meta-ad"
+        },
+        "payload": {
+            "properties": {
+                "type": {
+                    "const": "WPAdBlock",
+                    "default": "WPAdBlock"
+                },
+                "adpType": {
+                    "const": "ad",
+                    "default": "ad"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Amedia's position name"
+                },
+                "position": {
+                    "type": "integer",
+                    "default": 0,
+                    "description": "Sequence number, if adPosition is not unique per page"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "DFP Ad Unit Id"
+                },
+                "lineItem": {
+                    "type": "string",
+                    "description": "DFP Line Item Id"
+                },
+                "advertiser": {
+                    "type": "string",
+                    "description": "DFP Advertiser Id"
+                },
+                "creative": {
+                    "type": "string",
+                    "description": "DFP Creative Id"
+                }
+            },
+            "required": ["name", "unit", "lineItem", "advertiser", "creative"],
+            "type": "object"
+        }
+    }
+}

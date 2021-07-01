@@ -1,0 +1,74 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://www.adplogger.no/json-schema/event-video",
+    "title": "Video Event",
+    "description": "User interacts with a video.",
+    "type": "object",
+    "allOf": [{ "$ref": "event.schema.json" }],
+    "$context": {
+        "id": "@id",
+        "type": "@type",
+        "@vocab": "https://www.adplogger.no/json-schema/event-video/#"
+    },
+    "examples": [{
+        "domainBrowserId": "681dfce1-8867-4a0b-b758-c80f5f5f3363",
+        "domainVisitId": "93af7655-48ca-4444-9fea-8d875ffffc92",
+        "pageUrl": "https://www.hadeland.no/",
+        "pageViewId": "5404f76c-2472-42f8-a3b3-7a2231eaf812",
+        "schemaName": "event-video",
+        "payload": {
+            "type": "video",
+            "adpType": "pause",
+            "deltaTimestamp": 2400,
+            "concernsMeta": "9273aeb1-1efe-42c7-9ed4-929a076ca474",
+            "metaType": "Video",
+            "currentTime": 3500,
+            "watchTime": 2800,
+            "voulme": 80,
+            "playbackRate": 1,
+            "volume": 50
+        }
+    }],
+    "properties": {
+        "schemaName": {
+            "type": "string",
+            "const": "event-video",
+            "default": "event-video"
+        },
+        "payload": {
+            "properties": {
+                "adpType": {
+                    "type": "string",
+                    "enum": ["fullscreenenter", "fullscreenexit", "muted", "ended", "pause", "playing", "loadstart", "loadeddata", "loadedmetadata", "resize", "seeking", "seeked", "volumechange", "cuepointstart", "cuepointend", "timeupdate"],
+                    "description": "Timestamp events for various (player events)[https://flowplayer.com/developers/player/player-api#events]. This property identifies the type and `deltaTimestamp` set the timestamp"
+                },
+                "currentTime": {
+                    "type": "number",
+                    "min": 0,
+                    "description": "Current position in videoplayback"
+                },
+                "watchTime": {
+                    "type": "number",
+                    "min": 0,
+                    "description": "Time spent watching the video"
+                },
+                "volume": {
+                    "type": "integer",
+                    "min": 0,
+                    "max": 100,
+                    "description": "Current volume level"
+                },
+                "playbackRate": {
+                    "type": "integer",
+                    "description": "The speed of the playback with this property. A value larger than 1 will fast forward. A positive value smaller than 1 will play the video in slowmotion"
+                },
+                "type": {
+                    "type": "string",
+                    "const": "video"
+                }
+            },
+            "type": "object",
+            "required": ["type"]
+        }
+    }
+}

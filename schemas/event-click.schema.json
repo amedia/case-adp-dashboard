@@ -1,0 +1,68 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://www.adplogger.no/json-schema/event-click",
+    "title": "Click Event",
+    "description": "User click on an element",
+    "type": "object",
+    "allOf": [{ "$ref": "event.schema.json" }],
+    "$context": {
+        "id": "@id",
+        "type": "@type",
+        "@vocab": "https://www.adplogger.no/json-schema/event-click/#",
+        "schema": "http://schema.org/",
+        "cssSelector": "schema:cssSelector"
+    },
+    "examples": [{
+        "domainBrowserId": "681dfce1-8867-4a0b-b758-c80f5f5f3363",
+        "domainVisitId": "93af7655-48ca-4444-9fea-8d875ffffc92",
+        "pageUrl": "https://www.hadeland.no/",
+        "pageViewId": "5404f76c-2472-42f8-a3b3-7a2231eaf812",
+        "schemaName": "event-click",
+        "payload": {
+            "deltaTimestamp": 3504,
+            "concernsMeta": "9273aeb1-1efe-42c7-9ed4-929a076ca474",
+            "metaType": "Article",
+            "type": "click",
+            "link": "https://www.hadeland.no/vis/dodsannonser",
+            "cssSelector": "#abc a",
+            "coordinateX": 239,
+            "coordinateY": 4212
+        }
+    }],
+    "properties": {
+        "schemaName": {
+            "type": "string",
+            "const": "event-click",
+            "default": "event-click"
+        },
+        "payload": {
+            "properties": {
+                "link": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URL of clicked link"
+                },
+                "cssSelector": {
+                    "type": "string",
+                    "description": "Path to target element. NEED DEFINITION"
+                },
+                "coordinateX": {
+                    "type": "integer",
+                    "min": 0,
+                    "description": "Mouse or touch X-coordinate relative to document"
+                },
+                "coordinateY": {
+                    "type": "integer",
+                    "min": 0,
+                    "description": "Mouse or touch Y-coordinate relative to document"
+                },
+                "type": {
+                    "type": "string",
+                    "const": "click"
+                }
+            },
+            "type": "object",
+            "required": ["cssSelector", "coordinateX", "coordinateY", "type"]
+        }
+    }
+}

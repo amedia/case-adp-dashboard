@@ -1,0 +1,132 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://www.adplogger.no/json-schema/meta-web-page",
+    "title": "WebPage",
+    "description": "Description of the web page / page view",
+    "type": "object",
+    "allOf": [{ "$ref": "meta-element.schema.json" }],
+    "$context": {
+        "@vocab": "https://www.adplogger.no/json-schema/meta-web-page/#",
+        "schema": "http://schema.org/",
+        "adp": "https://www.adplogger.no/json-schema/",
+        "id": "@id",
+        "type": "@type",
+        "WebPage": "schema:WebPage",
+        "name": "schema:name",
+        "url": "schema:url",
+        "pageModel": "adp:meta-web-page#pageModel",
+        "isFrontPage": "adp:meta-web-page#isFrontPage",
+        "dataModel": "adp:meta-web-page#dataModel"
+    },
+    "examples": [{
+        "domainBrowserId": "681dfce1-8867-4a0b-b758-c80f5f5f3363",
+        "domainVisitId": "93af7655-48ca-4444-9fea-8d875ffffc92",
+        "pageUrl": "https://www.hadeland.no/",
+        "pageViewId": "5404f76c-2472-42f8-a3b3-7a2231eaf812",
+        "schemaName": "meta-web-page",
+        "payload": {
+            "id": "a3dfbcab-c345-42dc-8ee9-9f6d2732b452",
+            "position": 0,
+            "type": "WebPage",
+            "name": "Hadeland",
+            "referrer": "http://www.google.com",
+            "previousIdentifier": "09abc642-de33-4b1b-a280-601e9049965a",
+            "lastDomainVisitDate": "2019-12-01T12:10:07.000Z",
+            "plattformAndVersion": "maelstrom:1.2.13",
+            "adpLoggerVersion": "1.2.3",
+            "siteKey": "hadela",
+            "adblockDetected": false,
+            "initialDocumentHeight": 5436,
+            "pageModel": "homepage",
+            "isFrontPage": "true",
+            "dataModel": "optimus"
+        }
+    }, {
+        "domainBrowserId": "681dfce1-8867-4a0b-b758-c80f5f5f3363",
+        "domainVisitId": "93af7655-48ca-4444-9fea-8d875ffffc92",
+        "pageUrl": "https://www.hadeland.no/",
+        "pageViewId": "5404f76c-2472-42f8-a3b3-7a2231eaf812",
+        "schemaName": "meta-web-page",
+        "payload": {
+            "id": "a3dfbcab-c345-42dc-8ee9-9f6d2732b452",
+            "name": "Hadeland"
+        }
+    }],
+    "properties": {
+        "schemaName": {
+            "type": "string",
+            "const": "meta-web-page",
+            "default": "meta-web-page"
+        },
+        "payload": {
+            "properties": {
+              "type": {
+                "const": "WebPage"
+              },
+              "name": {
+                "type": "string",
+                "description": "The name of the web page"
+              },
+              "referrer": {
+                "type": "string",
+                "format": "uri",
+                "description": "Referrer to the page"
+              },
+              "previousIdentifier": {
+                "$ref": "./definitions.schema.json#/definitions/uuid4",
+                "description": "Reference to the referrer identifier"
+              },
+              "lastDomainVisitDate": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Last browser session visit on the domain"
+              },
+              "plattformAndVersion": {
+                "type": "string",
+                "pattern": "\\w+:(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$",
+                "description": "Appname Semver version of the app returning the page"
+              },
+              "adpLoggerVersion": {
+                "type": "string",
+                "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$",
+                "description": "Semver Adplogger version"
+              },
+              "siteKey": {
+                "type": "string",
+                "pattern": "^[a-z0-9_]{6}$",
+                "description": "Sitekey from site config"
+              },
+              "adblockDetected": {
+                "type": "boolean",
+                "description": "Flag to indicate that the user has adblock activated"
+              },
+              "initialDocumentHeight": {
+                "type": "integer",
+                "min": 0,
+                "description": "initial document height in pixels"
+              },
+              "pageModel": {
+                "type": "string",
+                "description": "Indicates pageType (homepage, indexpage, other)"
+              },
+              "isFrontPage": {
+                "type": "string",
+                "enum": ["true", "false"],
+                "description": "Indicates if frontpage or not"
+              },
+              "dataModel": {
+                "type": "string",
+                "description": "name of template used by maelstrom to generate the page"
+              }
+            },
+            "patternProperties": {
+                "^ns_.*": {
+                    "type": "string",
+                    "description": "Campaign tracking parameters"
+                }
+            },
+            "type": "object",
+            "required": []
+        }
+    }
+}

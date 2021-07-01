@@ -1,0 +1,70 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://www.adplogger.no/json-schema/event-video-ad",
+    "title": "Video Ad Event",
+    "description": "User interacts with a video.",
+    "type": "object",
+    "allOf": [{ "$ref": "event.schema.json" }],
+    "$context": {
+        "id": "@id",
+        "type": "@type",
+        "@vocab": "https://www.adplogger.no/json-schema/event-video/#"
+    },
+    "examples": [{
+        "domainBrowserId": "681dfce1-8867-4a0b-b758-c80f5f5f3363",
+        "domainVisitId": "93af7655-48ca-4444-9fea-8d875ffffc92",
+        "pageUrl": "https://www.hadeland.no/",
+        "pageViewId": "5404f76c-2472-42f8-a3b3-7a2231eaf812",
+        "schemaName": "event-video-ad",
+        "payload": {
+            "type": "video-ad",
+            "adpType": "ad-started",
+            "adType": "annoying",
+            "deltaTimestamp": 2400,
+            "concernsMeta": "9273aeb1-1efe-42c7-9ed4-929a076ca474",
+            "metaType": "Video",
+            "currentTime": 3500,
+            "duration": 28000
+        }
+    }],
+    "properties": {
+        "schemaName": {
+            "type": "string",
+            "const": "event-video-ad",
+            "default": "event-video-ad"
+        },
+        "payload": {
+            "properties": {
+                "adpType": {
+                    "type": "string",
+                    "enum": ["ad-started", "ad-skipped", "ad-blocked", "ad-completed"],
+                    "description": "Video ad events"
+                },
+                "adType": {
+                    "type": "string",
+                    "description": "Type of video ad"
+                },
+                "adId": {
+                    "type": "string",
+                    "description": "Ad identifier"
+                },
+                "currentTime": {
+                    "type": "number",
+                    "min": 0,
+                    "description": "Current position in videoplayback"
+                },
+                "duration": {
+                    "type": "number",
+                    "min": 0,
+                    "description": "Video ad duration in ms"
+                },
+                "type": {
+                    "type": "string",
+                    "const": "video-ad"
+                }
+            },
+            "type": "object",
+            "required": ["type"]
+        }
+    }
+}

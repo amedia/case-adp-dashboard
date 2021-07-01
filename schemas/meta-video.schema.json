@@ -1,0 +1,117 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://www.adplogger.no/json-schema/meta-video",
+    "title": "Video",
+    "description": "A teaser of some content",
+    "type": "object",
+    "allOf": [{ "$ref": "meta-element.schema.json" }],
+    "$context": {
+        "@vocab": "https://www.adplogger.no/json-schema/meta-video/#",
+        "schema": "http://schema.org/",
+        "id": "@id",
+        "type": "@type",
+        "Video": "schema:VideoObject",
+        "src": "schema:url",
+        "duration": "schema:duration",
+        "startTime": "schema:startTime",
+        "title": "schema:headline",
+        "category": "schema:category"
+    },
+    "examples": [{
+        "domainBrowserId": "681dfce1-8867-4a0b-b758-c80f5f5f3363",
+        "domainVisitId": "93af7655-48ca-4444-9fea-8d875ffffc92",
+        "pageUrl": "https://www.dt.no/mif/sport/nyhet/her-gar-ordforeren-til-himmels-for-en-kamp/s/5-57-1273940",
+        "pageViewId": "5404f76c-2472-42f8-a3b3-7a2231eaf812",
+        "schemaName": "meta-video",
+        "payload": {
+            "id": "486792ae-f281-4073-86e8-0905c72c8059",
+            "position": 0,
+            "type": "Video",
+            "adpType": "video",
+            "parent": "69a0ecf1-8075-40a4-b7f5-695b2a651eab",
+            "cssSelector": "#art-5-8-1187628 > article",
+            "title": "7158877_Highlight_c6444a.mp4",
+            "description": "My video desacription",
+            "category": "My category",
+            "autoplay": false,
+            "autopause": false,
+            "live": false,
+            "duration": 3000,
+            "startTime": 0,
+            "src": "blob:https://www.dt.no/c2e100fb-642b-4636-b077-203f5ca4e04d"
+        }
+    }, {
+        "domainBrowserId": "681dfce1-8867-4a0b-b758-c80f5f5f3363",
+        "domainVisitId": "93af7655-48ca-4444-9fea-8d875ffffc92",
+        "pageUrl": "https://www.dt.no/mif/sport/nyhet/her-gar-ordforeren-til-himmels-for-en-kamp/s/5-57-1273940",
+        "pageViewId": "5404f76c-2472-42f8-a3b3-7a2231eaf812",
+        "schemaName": "meta-video",
+        "payload": {
+            "id": "486792ae-f281-4073-86e8-0905c72c8059",
+            "src": "blob:https://www.dt.no/c2e100fb-642b-4636-b077-203f5ca4e04d"
+        }
+    }],
+    "properties": {
+        "schemaName": {
+            "type": "string",
+            "const": "meta-video",
+            "default": "meta-video"
+        },
+        "payload": {
+            "properties": {
+                "type": {
+                    "const": "Video",
+                    "default": "Video"
+                },
+                "contentId": {
+                    "type": "string",
+                    "description": "Content Source/Content Id"
+                },
+                "playerId": {
+                    "type": "string",
+                    "description": "Unique id for the player"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the video"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description of the video"
+                },
+                "category": {
+                    "type": "string",
+                    "description": "Category the video belongs to"
+                },
+                "autoplay": {
+                    "type": "boolean",
+                    "description": "Flag for autoplay status"
+                },
+                "autopause": {
+                    "type": "boolean",
+                    "description": "Flag for autopause status"
+                },
+                "live": {
+                    "type": "boolean",
+                    "description": "Flag for live/onDemand status"
+                },
+                "duration": {
+                    "type": "number",
+                    "min": 0,
+                    "description": "Video duration in ms"
+                },
+                "startTime": {
+                    "type": "number",
+                    "description": "The start offset for the video"
+                },
+                "src": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URL of the video source"
+                }
+            },
+            "type": "object",
+            "required": ["src"]
+        }
+    }
+}

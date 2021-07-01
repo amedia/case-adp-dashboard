@@ -1,0 +1,147 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://www.adplogger.no/json-schema/meta-article",
+    "title": "Article",
+    "description": "An article, such as a news article.",
+    "type": "object",
+    "allOf": [{ "$ref": "meta-element.schema.json" }],
+    "$context": {
+        "@vocab": "http://schema.org/",
+        "schema": "http://schema.org/",
+        "adp": "https://www.adplogger.no/json-schema/",
+        "id": "@id",
+        "type": "@type",
+        "contentId": "schema:identifier",
+        "title": "schema:headline",
+        "byline": "schema:author",
+        "tags": "schema:keywords",
+        "contentModel": "adp:meta-article#contentModel",
+        "articleSection": "adp:meta-article#articleSection",
+        "presentationMode": "adp:meta-article#presentationMode",
+        "adpType": "adp:meta-element#adpType"
+    },
+    "examples": [{
+        "domainBrowserId": "681dfce1-8867-4a0b-b758-c80f5f5f3363",
+        "domainVisitId": "93af7655-48ca-4444-9fea-8d875ffffc92",
+        "pageUrl": "https://www.hadeland.no/utgave/hadeland-hagen-saken/edition/5dba7de6f5ffdc1e4b9c1834/2/5-43-1175928",
+        "pageViewId": "5404f76c-2472-42f8-a3b3-7a2231eaf812",
+        "schemaName": "meta-article",
+        "payload": {
+            "id": "a3dfbcab-c345-42dc-8ee9-9f6d2732b452",
+            "position": 0,
+            "type": "NewsArticle",
+            "adpType": "story",
+            "parent": "de63d76d-2c31-41f3-818e-dfef1f246355",
+            "cssSelector": "#art-5-21-673772",
+            "contentId": "5-21-673772",
+            "datePublished": "2019-12-01T12:10:07.000Z",
+            "dateModified": "2019-12-01T13:04:18.000Z",
+            "title": "De frivillige etterlyser økonomi, men det er ikke berørt i ny plan: – Hører ikke med her",
+            "byline": "Anne Berit Reinsborg",
+            "isPartOf": "https://www.hadeland.no/utgave/hadeland-hagen-saken/edition/5dba7de6f5ffdc1e4b9c1834",
+            "pageStart": 3,
+            "pageEnd": 3,
+            "articleSection": "nyheter",
+            "tags": "nyheter, frivillighet, lunner-kommunestyre, lunner-kommune",
+            "isAccessibleForFree": false,
+            "contentModel": "paywall",
+            "presentationMode": "full"
+        }
+    }, {
+        "domainBrowserId": "681dfce1-8867-4a0b-b758-c80f5f5f3363",
+        "domainVisitId": "93af7655-48ca-4444-9fea-8d875ffffc92",
+        "pageUrl": "https://www.hadeland.no/utgave/hadeland-hagen-saken/edition/5dba7de6f5ffdc1e4b9c1834/2/5-43-1175928",
+        "pageViewId": "5404f76c-2472-42f8-a3b3-7a2231eaf812",
+        "schemaName": "meta-article",
+        "payload": {
+            "id": "a3dfbcab-c345-42dc-8ee9-9f6d2732b452",
+            "title": "De frivillige etterlyser økonomi, men det er ikke berørt i ny plan: – Hører ikke med her"
+        }
+    }],
+    "properties": {
+        "schemaName": {
+            "type": "string",
+            "const": "meta-article",
+            "default": "meta-article"
+        },
+        "payload": {
+            "properties": {
+                "type": {
+                    "enum": ["Article", "NewsArticle", "AdvertiserContentArticle", "OpinionNewsArticle", "ReviewNewsArticle"],
+                    "default": "Article"
+                },
+                "adpType": {
+                    "enum": ["story", "opinion", "gallery", "video", "embed", "poll", "review", "ytring", "section", "feature"],
+                    "description": "Content type in our cms"
+                },
+                "contentId": {
+                    "type": "string",
+                    "description": "Content Source/Content Id"
+                },
+                "acpId": {
+                    "type": "string",
+                    "pattern": "\\d+-\\d+-\\d+",
+                    "description": "Amedia Content Platform Id (to be removed)"
+                },
+                "datePublished": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Date of first broadcast/publication. A date value in ISO 8601 date format"
+                },
+                "dateModified": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The date on which the content  was most recently modified. A date value in ISO 8601 date format"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "Headline of the article"
+                },
+                "byline": {
+                    "type": "string",
+                    "description": "Comma separated list of authors of the article"
+                },
+                "isPartOf": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Magazine or other package the article is part of"
+                },
+                "pageStart": {
+                    "type": "integer",
+                    "min": 0,
+                    "description": "If magazine or gallery, the page number"
+                },
+                "pageEnd": {
+                    "type": ["integer", "null"],
+                    "default": "null",
+                    "min": 0,
+                    "description": "Page end number if the article spans more than one page"
+                },
+                "articleSection": {
+                    "type": "string",
+                    "description": "The section the article belongs to"
+                },
+                "tags": {
+                    "type": "string",
+                    "description": "The articles editorial tags. Separated by comma"
+                },
+                "isAccessibleForFree": {
+                    "type": "boolean",
+                    "description": "A flag to signal that the item accessible for free."
+                },
+                "contentModel": {
+                    "type": "string",
+                    "enum": ["paywall", "registration", "metered", "free"],
+                    "description": "Model for accessing this content"
+                },
+                "presentationMode": {
+                    "type": "string",
+                    "enum": ["full", "excerpt"],
+                    "description": "Flag to indicate if the user has full access to the article or is shown an excerpt"
+                }
+            },
+            "type": "object",
+            "required": []
+        }
+    }
+}
