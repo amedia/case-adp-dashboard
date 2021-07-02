@@ -22,6 +22,6 @@ Noen spørsmål du kan forsøke å besvare:
 
 ## Spørsmål
 
-Ring Tor på [970 66 909](tel:97066909) eller [epost](mailto:tor.skjotskift@amedia.no)
+Ring Tor på 970 66 909 eller [epost](mailto:tor.skjotskift@amedia.no)
 
 
