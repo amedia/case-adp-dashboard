@@ -20,5 +20,8 @@ Noen spørsmål du kan forsøke å besvare:
 * Hvordan kan vi sikre at vi ikke mister for mye data, f.eks. hvis brukeren lukker nettleseren
 * Hvordan vil du mellomlagre data som dashboardet skal vise?
 
+## Spørsmål
+
+Ring Tor på 970 66 909 eller [mailto:tor.skjotskift@amedia.no](epost)
 
 
